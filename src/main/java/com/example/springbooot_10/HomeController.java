@@ -29,7 +29,7 @@ public class HomeController {
      }
 @PostMapping("/process")
 public String processForm(@Valid Course course, BindingResult result)
-{
+{System.out.println(result.toString());
     if(result.hasFieldErrors()){
         return "courseform";
     }
@@ -39,7 +39,7 @@ public String processForm(@Valid Course course, BindingResult result)
     @RequestMapping("/detail/{id}")
      public String showCourse(@PathVariable("id")long id, Model model){
          model.addAttribute("course",courseRepository.findOne(id));
-         return "show";
+         return "Show";
      }
 
 
@@ -51,9 +51,9 @@ public String processForm(@Valid Course course, BindingResult result)
 
 
      @RequestMapping("/delete/{id}")
-     public String delCourse(@PathVariable("id")long id) {
+     public String delCourse(@PathVariable("id") long id) {
        courseRepository.delete(id);
-         return "redirect:";
+         return "redirect:/";
      }
 
 
